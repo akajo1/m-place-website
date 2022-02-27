@@ -1,17 +1,17 @@
 import React from 'react'
 import HeaderBar from '../components/molecules/HeaderBar';
-import ArticlesList from '../components/organisms/ArticlesList';
 import BottomTab from '../components/organisms/BottomTab';
+import VideoList from '../components/organisms/VideoList';
 
 type Props = {}
 
-const News = (props: Props) => {
+const Videos = (props: Props) => {
   return (
     <div className=''>
       <HeaderBar/>
-      <ArticlesList />
-      <BottomTab active='news'/>
+      <VideoList/>
+      <BottomTab active='videos'/>
     </div>
   )
 }
-export default News;
+export default Videos;

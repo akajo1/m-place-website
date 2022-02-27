@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Pacifico&display=swap');
 :root{
   --white:#fff;
   --dark:#111;
@@ -8,6 +9,8 @@
   box-sizing: border-box;
   margin:0;
   padding:0;
+  font-family: 'Didact Gothic', sans-serif;
+
 }
 body{
   background-color: var(--black);
@@ -86,6 +89,10 @@ border-radius: 20px;
   margin:10px 0;
   position:relative;
   z-index: 0;
+  transition: all 0.3s;
+}
+.eventItem:hover{
+  transform: scale(1.02);
 }
 .eventItem .content_item{
   position:absolute;
@@ -140,4 +147,64 @@ border-radius: 20px;
 .bottomTab .bottomTabItem.active p,
 .bottomTab .bottomTabItem.active .icon{
   color: var(--yellow);
+}
+
+.articles,.more{
+  padding-top: 15%;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 15%;
+}
+.articles .articleItem{
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.articles .articleItem img{
+  transition: all 0.3s;
+}
+.articles .articleItem:hover img{
+  transform: scale(1.01);
+}
+.more .listMenu li{
+  list-style: none;
+  color:var(--white);
+  border-bottom: 1px solid var(--dark);
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+}
+.networking{
+  width: 100%;
+  color:var(--white);
+  display: flex;
+  
+}
+.networking .icons{
+  width:40px;
+  height:40px;
+  border-radius: 20px;
+  background-color: #111;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin:5px;
+  transition:all 0.3s;
+  cursor: pointer;
+}
+.networking .icons:hover{
+  transform: scale(1.2);
+}
+.networking .icons .icon{
+  font-size: 22px; 
+}
+.networking .icons:nth-child(1){
+  background-color: #00B74A;
+}
+.networking .icons:nth-child(2){
+  background-color: #B71C1C;
+}
+.networking .icons:nth-child(3){
+  background-color: blue;
+}
+.networking .icons:nth-child(4){
+  background-color: #D50000;
 }
