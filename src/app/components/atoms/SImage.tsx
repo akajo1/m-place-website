@@ -1,9 +1,18 @@
 import React from 'react'
 
-type Props = {}
+type Props = {
+  url:{
+    url:string,
+    style?:Object
+  }
+  style?:Object
+}
 
-export default function SImage({}: Props) {
+const SImage:React.FC<Props> =({url,style})=>{
   return (
-    <div>SImage</div>
+    <div style={style}>
+      <img src={url.url} style={url.style}  />
+    </div>
   )
 }
+export default SImage;
