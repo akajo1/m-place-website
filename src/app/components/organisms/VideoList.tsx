@@ -1,17 +1,27 @@
-import React from 'react'
-import { colors } from '../../styles/colors'
-import VideoItem from '../molecules/VideoItem'
+import React from "react";
+import { videoType } from "../../config";
+import { colors } from "../../styles/colors";
+import VideoItem from "../molecules/VideoItem";
 
-type Props = {}
+type Props = {
+  lists: videoType[];
+};
 
-export default function VideoList({}: Props) {
+export default function VideoList({ lists }: Props) {
   return (
     <div className="articles">
-      <h1 style={{ color: colors.white, fontWeight: "700" ,marginBottom:15,marginTop:10}}>Vidéos</h1>
-    <VideoItem/>
-    <VideoItem/>
-    <VideoItem/>
-      
+      <h1
+        style={{
+          color: colors.white,
+          fontWeight: "700",
+          marginBottom: 15,
+          marginTop: 10,
+        }}
+      >
+        Vidéos
+      </h1>
+      {lists.length > 0 &&
+        lists.map((item, index) => <VideoItem item={item} key={index} />)}
     </div>
-  )
+  );
 }

@@ -1,17 +1,21 @@
 import React from "react";
+import { articleType } from "../../config";
 import { colors } from "../../styles/colors";
 import ArticleItem from "../molecules/ArticleItem";
 
-type Props = {};
+type Props = {
+    lists: articleType[]
+};
 
-export default function ArticlesList({}: Props) {
+export default function ArticlesList({lists}: Props) {
   return (
     <div className="articles">
       <h1 style={{ color: colors.white, fontWeight: "700" ,marginBottom:15,marginTop:10}}>Articles</h1>
-
-      <ArticleItem />
-      <ArticleItem />
-      <ArticleItem />
+        {
+            lists.length > 0 && lists.map((item,index)=>    <ArticleItem item={item} key={index}/>)
+        }
+   
+   
     </div>
   );
 }

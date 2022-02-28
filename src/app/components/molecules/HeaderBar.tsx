@@ -9,6 +9,7 @@ import { colors } from "../../styles/colors";
 type Props = {};
 
 export default function HeaderBar({}: Props) {
+  const user = localStorage.getItem('client');
   return (
     <div className="headerBar">
       <SImage
@@ -19,7 +20,7 @@ export default function HeaderBar({}: Props) {
       />
      <div className="rightIcons">
      <SIcon lien="/search" icon={<BsSearch size={22} color={colors.white} className="icons" />}  />
-     <SIcon lien="/profil" icon={<BiUser size={22} color={colors.white} className="icons" />}  active />
+     <SIcon lien={(user && user !='') ? '/profil' : '/login'} icon={<BiUser size={22} color={colors.white} className="icons" />}  active />
      </div>
     </div>
   );

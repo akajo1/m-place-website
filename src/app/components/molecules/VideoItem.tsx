@@ -3,9 +3,12 @@ import { useNavigate } from 'react-router-dom'
 import { colors } from '../../styles/colors'
 import YouTube from 'react-youtube';
 import {HiVideoCamera} from 'react-icons/hi'
-type Props = {}
+import { videoType } from '../../config';
+type Props = {
+    item:videoType
+}
 
-export default function VideoItem({}: Props) {
+export default function VideoItem({item}: Props) {
     const navigate  = useNavigate();
     const opts = {
         height: '390',
@@ -22,7 +25,7 @@ export default function VideoItem({}: Props) {
     
   return (
     <div className="articleItem" onClick={()=> navigate('')}>
-<YouTube videoId="ruM8PIGQJgE" opts={{
+<YouTube videoId={item.lien_video} opts={{
         height: '280',
         width: '100%',
         playerVars: {
@@ -32,7 +35,7 @@ export default function VideoItem({}: Props) {
       }} onReady={_onReady}  />  
       <div style={{color:colors.white,textAlign:'justify',fontSize:'18px',marginBottom:20,marginTop:5,fontWeight:'700',display:'flex',alignItems:'center'}}>
     <div style={{width:40,height:40,borderRadius:20,backgroundColor:colors.dark,marginRight:10, display:'flex',alignItems:'center',justifyContent:'center'}}>
-    <HiVideoCamera size={26}/></div>  <p style={{fontWeight:'700'}}>Morijah - Miséricorde (Audio Officiel)</p>
+    <HiVideoCamera size={26}/></div>  <p style={{fontWeight:'700'}}>{item.titre}</p>
         </div>
     </div>
   )
