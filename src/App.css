@@ -1,38 +1,226 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Didact+Gothic&family=Pacifico&display=swap');
+:root{
+  --white:#fff;
+  --dark:#111;
+  --black:#000;
+  --yellow:#F9A825
 }
+*{
+  box-sizing: border-box;
+  margin:0;
+  padding:0;
+  font-family: 'Didact Gothic', sans-serif;
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+body{
+  background-color: var(--black);
+  width: 100%;
+  position:relative;
+  font-family: sans-serif;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.headerBar{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: fixed;
+  background-color: var(--dark);
+  width: 100%;
+  height: 10%;
+  padding: 0 15px;
+  z-index: 10;
+}
+.rightIcons{
+  display: flex;
+}
+.icons{
+ color: var(--white)
+}
+.linking{
+  text-decoration: none;
+}
+.link{
+  width:40px;
+  height:40px;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.3s;
+}
+.link.active{
+  background-color: var(--black);
+}
+.link:active{
+  background-color: var(--yellow);
+}
+.link:hover{
+background-color: var(--black);
+}
+.container{
+  padding-top: 15%;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+.pub__container{
+  width: 100%;
+  display: flex;
+  overflow-x: hidden;
+}
+.pub__container .pubItem{
+width: 98%;
+height: 200px;
+background-color: var(--dark);
+border-radius: 20px;
+}
+.eventList{
+  margin-top: 10px;
   display: flex;
   flex-direction: column;
+  width: 98%;
+  position:'relative';
+  padding-bottom: 15%;
+}
+.title__h3{
+  color:var(--white);
+  display: flex;
   align-items: center;
+}
+.eventItem{
+  margin:10px 0;
+  position:relative;
+  z-index: 0;
+  transition: all 0.3s;
+}
+.eventItem:hover{
+  transform: scale(1.02);
+}
+.eventItem .content_item{
+  position:absolute;
+  bottom:20px;
+  display: flex;
+  padding:0 20px;
+  justify-content: space-between;
+  width: 100%;
+}
+.eventItem .content_item .title__event{
+  background-color: rgba(204, 204, 204, 0.801);
+  width:78%;
+  padding:10px 15px;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  color:var(--black);
+  font-weight: 700;
+}
+
+.eventItem .content_item .title__billet{
+  background-color: rgba(0, 0, 0, 0.705);
+  font-weight: 700;
+  color:#fff;
+  padding:10px 15px;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  width:21%;
+  text-align: center;
+}
+.bottomTab{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--black);
+  position: fixed;
+  bottom:0;
+  width: 100%;
+  z-index: 10;
+  height: 10%;
+  padding: 0 20px;
+}
+.bottomTab .bottomTabItem{
+  text-align: center;
+}
+.bottomTab .bottomTabItem .icon{
+  color:var(--white)
+}
+.bottomTab .bottomTabItem p{
+  color:#bbb;
+  font-size:12px;
+}
+.bottomTab .bottomTabItem.active p,
+.bottomTab .bottomTabItem.active .icon{
+  color: var(--yellow);
+}
+
+.articles,.more{
+  padding-top: 15%;
+  padding-right: 10px;
+  padding-left: 10px;
+  padding-bottom: 15%;
+}
+.articles .articleItem{
+  cursor: pointer;
+  transition: all 0.3s;
+}
+.articles .articleItem img{
+  transition: all 0.3s;
+}
+.articles .articleItem:hover img{
+  transform: scale(1.01);
+}
+.more .listMenu li{
+  list-style: none;
+  color:var(--white);
+  border-bottom: 1px solid var(--dark);
+  margin-bottom: 10px;
+  padding-bottom: 15px;
+  cursor: pointer;
+}
+.networking{
+  width: 100%;
+  color:var(--white);
+  display: flex;
+  
+}
+.networking .icons{
+  width:40px;
+  height:40px;
+  border-radius: 20px;
+  background-color: #111;
+  display: flex;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  align-items: center;
+  margin:5px;
+  transition:all 0.3s;
+  cursor: pointer;
 }
-
-.App-link {
-  color: #61dafb;
+.networking .icons:hover{
+  transform: scale(1.2);
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.networking .icons .icon{
+  font-size: 22px; 
+}
+.networking .icons:nth-child(1){
+  background-color: #00B74A;
+}
+.networking .icons:nth-child(2){
+  background-color: #B71C1C;
+}
+.networking .icons:nth-child(3){
+  background-color: blue;
+}
+.networking .icons:nth-child(4){
+  background-color: #D50000;
+}
+.login{
+  width: 100%;
+  height: 100vh;
+  background-image: url('./app/assets/back.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+.login .mask{
+  background-color: rgba(0, 0, 0, 0.63);
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
 }
