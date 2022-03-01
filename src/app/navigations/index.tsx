@@ -12,6 +12,7 @@ import News from '../screens/News';
 import Organisateur from '../screens/Organisateur';
 import Profil from '../screens/Profil';
 import Videos from '../screens/Videos';
+import Code from '../screens/Code'
 
 type Props = {}
 
@@ -31,6 +32,7 @@ export default function Navigation({}: Props) {
       <Route path="/login" element={<Login/>} />
       <Route path="/inscription" element={<Inscription/>} />
       <Route path="/profil" element={<Profil/>} />
+      <Route path="/code/:token" element={<Code/>} />
      </Routes>
    </BrowserRouter>
   )
