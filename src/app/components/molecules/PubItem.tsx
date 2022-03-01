@@ -10,13 +10,11 @@ type Props = {
 
 const PubItem:React.FC<Props> = ({uri,lien})=> {
   return (
-    <div className="pubItem">
-        <Link to={lien}>
-        <SImage  url={{
+    <div className="pubItem" onClick={()=> document.location=lien}>
+         <SImage  url={{
             url:uri,
             style:{width:'100%',height:200,borderRadius:20,objectFit:'cover'}
         }}/>
-        </Link>
     </div>
   )
 }
