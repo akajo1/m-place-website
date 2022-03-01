@@ -11,7 +11,18 @@ export default function Login({}: Props) {
   return (
     <div className="login">
       <div className="mask"></div>
-      <div
+
+      <div style={{ zIndex: 10, position: "relative" }}>
+        <div style={{width:'100%',height:250,display:'flex',alignItems:'center',justifyContent:'center',paddingTop:30}}>
+          <SImage
+            url={{
+              url: image.logo,
+              style: { width: 100 },
+            }}
+            style={{width:150,height:150,borderRadius:75,backgroundColor: "#FFFFFF1a",display:'flex',alignItems:'center',justifyContent:'center'}}
+          />
+        </div>
+        <div
         style={{
           position: "absolute",
           width: 80,
@@ -30,27 +41,23 @@ export default function Login({}: Props) {
       >
         <BsChevronLeft color={colors.white} size={34} />
       </div>
-      <div style={{ zIndex: 10, position: "relative" }}>
-        <div style={{width:'100%',height:250,display:'flex',alignItems:'center',justifyContent:'center',paddingTop:30}}>
-          <SImage
-            url={{
-              url: image.logo,
-              style: { width: 100 },
-            }}
-            style={{width:150,height:150,borderRadius:75,backgroundColor: "#FFFFFF1a",display:'flex',alignItems:'center',justifyContent:'center'}}
-          />
-        </div>
-
         <form action="" method="post" className="form">
             <div className="form-group">
                 <label htmlFor="">Nom d'utilisateur</label>
-                <input type="text" placeholder="+243" />
+                <input type="tel" placeholder="+243" />
             </div>
             <div className="form-group">
                 <label htmlFor="">Mot de passe</label>
-                <input type="text" placeholder="mot de passe" />
+                <input type="password" placeholder="mot de passe" />
+            </div>
+            <div className="form-group">
+            <button>Se connecter</button>
+            <p>mot de passe oublié ??</p>
+            <p>Pas encore de compte ? <span onClick={()=> navigate('/inscription')}>S'inscrire</span></p>
             </div>
         </form>
+       
+
       </div>
     </div>
   );
