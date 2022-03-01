@@ -60,7 +60,7 @@ export default function Inscription({}: Props) {
                 <input type="password" placeholder="mot de passe" />
             </div>
             <div className="form-group">
-            <button>S'inscrire</button>
+            <button onClick={()=> navigate('/profil')}>S'inscrire</button>
             <p>Déjà un compte ? <span onClick={()=> navigate('/login')}>Se connecter</span></p>
             </div>
         </form>
