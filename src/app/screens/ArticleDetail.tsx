@@ -1,12 +1,27 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import SImage from '../components/atoms/SImage';
 import {BsChevronLeft} from 'react-icons/bs'
 import { colors } from '../styles/colors';
-import {useNavigate} from 'react-router-dom'
+import {useNavigate, useParams} from 'react-router-dom'
+import { articleType } from '../config';
+import { getNew } from '../config/api';
 type Props = {}
 
 export default function ArticleDetail({}: Props) {
     const navigate = useNavigate()
+    const {token} = useParams()
+    const [article, setArticle]= useState<articleType>()
+
+    useEffect(()=>{
+        (async ()=>{
+            if(token !== undefined){
+                await getNew(token).
+                then((response)=>{
+                    setArticle(response.data)
+                })
+            }
+        })()
+    },[])
   return (
    <div className="eventDetail">
        <div style={{position:'absolute',width:80,height:80,borderRadius:40,backgroundColor:'#000000ce',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:'700',top:20,left:20,cursor:'pointer'}} onClick={()=> navigate(-1)}>
@@ -14,7 +29,7 @@ export default function ArticleDetail({}: Props) {
        </div>
        <SImage
             url={{
-                url:'https://cdn.pixabay.com/photo/2017/07/21/23/57/concert-2527495_1280.jpg',
+                url:''+ article?.cover,
                 style:{
                     width:'100%',
                     height:'60vh',
@@ -23,9 +38,9 @@ export default function ArticleDetail({}: Props) {
             }}
        />
        <div style={{padding:'20px 10px'}}>
-       <h1 style={{color:colors.white,fontWeight:'700',marginBottom:15}}>Yamaha Drums Shown</h1>
+       <h1 style={{color:colors.white,fontWeight:'700',marginBottom:15,textAlign:'justify'}}>{article?.titre}</h1>
      
-    <p style={{color:colors.white}}>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Recusandae libero ut similique cum a vero, inventore qui! Delectus vel, corporis doloremque explicabo, quisquam praesentium pariatur error ipsum assumenda reiciendis quibusdam?</p>
+    <p style={{color:colors.white,textAlign:'justify'}}>{article?.description}</p>
        </div>
    </div>
   )

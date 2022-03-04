@@ -4,5 +4,6 @@ export const colors = {
     dark:'#111',
     darkLight:'#212121',
     second:'#F9A825',
-    danger: '#D50000'
+    danger: '#D50000',
+    success: '#4CAF50'
 }

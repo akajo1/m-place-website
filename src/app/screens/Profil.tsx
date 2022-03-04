@@ -1,13 +1,48 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { BsChevronLeft } from 'react-icons/bs'
 import { useNavigate } from 'react-router-dom'
 import SImage from '../components/atoms/SImage'
 import { colors } from '../styles/colors'
 import {ImQrcode} from 'react-icons/im'
+import { getBillets, getUser } from '../config/api'
+import { billetType, userType } from '../config'
 type Props = {}
 
 export default function Profil({ }: Props) {
   const navigate = useNavigate()
+  const user = localStorage.getItem('mplace-user');
+  const [info,setInfo]= useState<userType>()
+  const [billets,setBillets]= useState<billetType[]>()
+const logout = ()=>{
+  localStorage.removeItem('mplace-user')
+  navigate('/')
+}
+  useEffect(()=>{
+    if(user === null) { navigate('/')}
+  },[])
+  useEffect(()=>{
+    (
+      async ()=>{
+        if(user){
+          await getUser(user)
+          .then((response)=>{
+            const reponse = response.data;
+            setInfo(reponse)
+
+            getBillets(reponse.id)
+            .then((response)=>{
+              const reponse = response.data;
+              setBillets(reponse)
+            })
+          })
+        }else {
+          localStorage.removeItem('mplace-user')
+          navigate('/login')
+        }
+      }
+    )();
+  },[])
+console.log(user)
   return (
     <div style={{ width: '100%', position: 'relative' }}>
       <SImage
@@ -49,10 +84,10 @@ export default function Profil({ }: Props) {
             color: colors.white,
             fontWeight: '700'
           }}>
-            jospin AGAROWA
+            {info?.nom}
           </h1>
-          <h5 style={{ color: colors.white, fontSize: 18, marginTop: 5 }}>0990753266</h5>
-          <button style={{ backgroundColor: colors.danger, color: colors.white, border: 'none', height: 30, width: 120, borderRadius: 20, marginTop: 20, cursor: 'pointer' }}>Se deconnecter</button>
+          <h5 style={{ color: colors.white, fontSize: 18, marginTop: 5 }}>{info?.tel}</h5>
+          <button style={{ backgroundColor: colors.danger, color: colors.white, border: 'none', height: 30, width: 120, borderRadius: 20, marginTop: 20, cursor: 'pointer' }} onClick={()=> logout()}>Se deconnecter</button>
         </div>
         <SImage
           url={{

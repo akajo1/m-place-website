@@ -9,7 +9,7 @@ import { colors } from "../../styles/colors";
 type Props = {};
 
 export default function HeaderBar({}: Props) {
-  const user = localStorage.getItem('client');
+  const user = localStorage.getItem('mplace-user');
   return (
     <div className="headerBar">
       <SImage

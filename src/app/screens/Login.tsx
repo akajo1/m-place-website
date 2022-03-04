@@ -1,13 +1,52 @@
-import React from "react";
+import React, { FormEvent, FormEventHandler, useEffect, useState } from "react";
 import { BsChevronLeft } from "react-icons/bs";
 import { colors } from "../styles/colors";
 import { useNavigate } from "react-router-dom";
 import SImage from "../components/atoms/SImage";
 import { image } from "../assets";
+import { userLogin } from "../config/api";
 type Props = {};
 
 export default function Login({}: Props) {
   const navigate = useNavigate();
+  window.addEventListener('keypress',(e)=>{
+    if(e.keyCode == 13) e.preventDefault()
+  })
+  const user= localStorage.getItem('mplace-user')
+  const [username,setUsername]= useState<string>('')
+  const [password,setPassword]= useState<string>('')
+  const [error,setError]= useState<string>('')
+ 
+  
+
+    const logins = ()=>{
+     
+         if(username !='' && password !=''){
+          userLogin(username,password)
+          .then((response)=>{
+            const reponse = response.data;
+            if(reponse.erreur && reponse.erreur !=''){
+              setError(reponse.erreur)
+            }else{
+              localStorage.removeItem('mplace-user')
+              localStorage.setItem('mplace-user',reponse.token)
+              navigate('/')
+              localStorage.setItem('message',reponse.nom +'!!, bienvenu sur M-place')
+
+            }
+          })
+         }else{
+           setError('vous devez remplir tous les champs');
+         }
+    }
+    if(error !=""){
+        setTimeout(()=>{
+            setError('')
+        },3000)
+    }
+   useEffect(()=>{
+    if(user !==null) {navigate('/')}
+   })
   return (
     <div className="login">
       <div className="mask"></div>
@@ -41,21 +80,24 @@ export default function Login({}: Props) {
       >
         <BsChevronLeft color={colors.white} size={34} />
       </div>
-        <form action="" method="post" className="form">
+      {
+               error !='' &&  <div style={{backgroundColor:colors.danger,color:colors.white,padding:'10px 20px',borderRadius:20,width:'90%',margin:'0 auto'}}>{error}</div>
+           }
+        <div  className="form" style={{marginTop:20}} >
             <div className="form-group">
                 <label htmlFor="">Nom d'utilisateur</label>
-                <input type="tel" placeholder="+243" />
+                <input type="tel" placeholder="+243" value={username} onChange={(input)=> setUsername(input.target.value)}/>
             </div>
             <div className="form-group">
                 <label htmlFor="">Mot de passe</label>
-                <input type="password" placeholder="mot de passe" />
+                <input type="password" placeholder="mot de passe" value={password} onChange={(input)=> setPassword(input.target.value)} />
             </div>
             <div className="form-group">
-            <button>Se connecter</button>
+            <button onClick={()=> logins()}  >Se connecter</button>
             <p>mot de passe oublié ??</p>
             <p>Pas encore de compte ? <span onClick={()=> navigate('/inscription')}>S'inscrire</span></p>
             </div>
-        </form>
+        </div>
        
 
       </div>
