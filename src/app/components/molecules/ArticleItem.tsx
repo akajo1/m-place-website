@@ -12,10 +12,10 @@ export default function ArticleItem({item}: Props) {
   return (
     <div className="articleItem" onClick={()=> navigate('/articleDetail/'+item.token)}>
         <SImage  url={{
-            url:item.cover,
+            url:item.image,
             style:{
                 width:'100%',
-                height:'250px',
+                height:'200px',
                 objectFit:'cover',
                 borderRadius:'20px'
             }

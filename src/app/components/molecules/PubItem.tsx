@@ -13,7 +13,7 @@ const PubItem:React.FC<Props> = ({uri,lien})=> {
     <div className="pubItem" onClick={()=> document.location=lien}>
          <SImage  url={{
             url:uri,
-            style:{width:'100%',height:200,borderRadius:20,objectFit:'cover'}
+            style:{width:'100%',height:150,borderRadius:20,objectFit:'cover'}
         }}/>
     </div>
   )

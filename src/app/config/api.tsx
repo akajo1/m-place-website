@@ -23,6 +23,9 @@ export const getVideos = ()=>{
 export const getNews = ()=>{
    return axios.get('/news')
 }
+export const getBillett = (id:number)=>{
+   return axios.get('/eventbillet/'+id)
+}
 
 export const getNew = (news:string)=>{
    return axios.get('/news/'+encodeURI(news))

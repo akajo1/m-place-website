@@ -29,7 +29,7 @@ export default function ArticleDetail({}: Props) {
        </div>
        <SImage
             url={{
-                url:''+ article?.cover,
+                url:''+ article?.image,
                 style:{
                     width:'100%',
                     height:'60vh',

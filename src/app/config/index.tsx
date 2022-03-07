@@ -1,7 +1,14 @@
 export const baseUrl = 'http://localhost:3000/'
+export const baseImage = 'http://172.20.10.7:8080/fileup/'
 export type imageType={
     id:number,
     image: string
+}
+export type billetTType={
+    id:number,
+    nbr:number,
+    prix:number,
+    tarifs:string
 }
 export type eventType={
     id: number,
@@ -15,6 +22,7 @@ export type eventType={
     cover:string,
     portrait:string
     billet: number,
+    billets?:billetTType[],
     token_event:string,
     token_client:string
 }
@@ -24,7 +32,7 @@ export type articleType={
     titre:string,
     date_ajout:string,
     token:string,
-    cover:string,
+    image:string,
     description:string
 }
 

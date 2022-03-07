@@ -6,6 +6,7 @@ import { colors } from '../styles/colors'
 import {ImQrcode} from 'react-icons/im'
 import { getBillets, getUser } from '../config/api'
 import { billetType, userType } from '../config'
+import BilletItem from '../components/molecules/BilletItem'
 type Props = {}
 
 export default function Profil({ }: Props) {
@@ -42,7 +43,7 @@ const logout = ()=>{
       }
     )();
   },[])
-console.log(user)
+  console.log(billets)
   return (
     <div style={{ width: '100%', position: 'relative' }}>
       <SImage
@@ -111,16 +112,9 @@ console.log(user)
      <div style={{padding:'20px'}}>
      <h1 style={{color:colors.white}}>Mes billets</h1>
       <h4 style={{color:colors.second,marginBottom:30}}>Evenement</h4>
-    <div style={{display:'flex',backgroundColor:colors.darkLight,padding:'10px',borderRadius:30,alignItems:'center',cursor:'pointer'}} onClick={()=> navigate('/code/1234')}>
-      <div style={{backgroundColor:colors.black,width:60, height:60,borderRadius:30,display:'flex',justifyContent:'center',alignItems:'center',marginRight:15}}>
-        <ImQrcode color={colors.white} size={24}/>
-      </div>
-      <div>
-        <h3 style={{color:colors.white}}>Yamaha Drums Show</h3>
-        <h5 style={{color:'#ccc'}}>prévu pour le 20/2/2022</h5>
-        <h3 style={{color:colors.second}}>18$ USD</h3>
-      </div>
-    </div>
+    {
+      billets?.map((item,index)=> <BilletItem billet={item} key={index}/>)
+    }
      </div>
     </div>
   )

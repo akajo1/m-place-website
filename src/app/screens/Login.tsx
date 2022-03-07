@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import SImage from "../components/atoms/SImage";
 import { image } from "../assets";
 import { userLogin } from "../config/api";
+import LazyAnimate from "../components/molecules/LazyAnimate";
 type Props = {};
 
 export default function Login({}: Props) {
@@ -16,15 +17,17 @@ export default function Login({}: Props) {
   const [username,setUsername]= useState<string>('')
   const [password,setPassword]= useState<string>('')
   const [error,setError]= useState<string>('')
- 
+  const [load,setLoad]= useState(false)
+
   
 
     const logins = ()=>{
-     
+     setLoad(true)
          if(username !='' && password !=''){
           userLogin(username,password)
           .then((response)=>{
             const reponse = response.data;
+            setLoad(false)
             if(reponse.erreur && reponse.erreur !=''){
               setError(reponse.erreur)
             }else{
@@ -36,6 +39,7 @@ export default function Login({}: Props) {
             }
           })
          }else{
+           setLoad(false)
            setError('vous devez remplir tous les champs');
          }
     }
@@ -50,7 +54,7 @@ export default function Login({}: Props) {
   return (
     <div className="login">
       <div className="mask"></div>
-
+      {load && <LazyAnimate/>}
       <div style={{ zIndex: 10, position: "relative" }}>
         <div style={{width:'100%',height:250,display:'flex',alignItems:'center',justifyContent:'center',paddingTop:30}}>
           <SImage

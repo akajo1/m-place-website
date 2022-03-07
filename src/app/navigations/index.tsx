@@ -14,6 +14,7 @@ import Profil from "../screens/Profil";
 import Videos from "../screens/Videos";
 import Code from "../screens/Code";
 import Search from "../screens/Search";
+import Pay from "../screens/pay";
 
 type Props = {};
 
@@ -35,6 +36,7 @@ export default function Navigation({}: Props) {
         <Route path="/articleDetail/:token" element={<ArticleDetail />} />
         <Route path="/eventDetail/:token" element={<EventDetail />} />
         <Route path="/code/:token" element={<Code />} />
+        <Route path="/pay/:user/:event" element={<Pay />} />
       </Routes>
     </BrowserRouter>
   );
