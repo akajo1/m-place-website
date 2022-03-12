@@ -1,5 +1,5 @@
-export const baseUrl = 'http://localhost:3000/'
-export const baseImage = 'http://172.20.10.7:8080/fileup/'
+export const baseUrl = 'http://172.20.10.3:3000/'
+export const baseImage = 'http://172.20.10.7:8888/fileup/'
 export type imageType={
     id:number,
     image: string
@@ -8,7 +8,8 @@ export type billetTType={
     id:number,
     nbr:number,
     prix:number,
-    tarifs:string
+    tarifs:string,
+    token?:string
 }
 export type eventType={
     id: number,

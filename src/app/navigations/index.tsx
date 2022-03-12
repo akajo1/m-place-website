@@ -7,6 +7,7 @@ import EventDetail from "../screens/EventDetail";
 import Home from "../screens/Home";
 import Inscription from "../screens/Inscription";
 import Login from "../screens/Login";
+import ScannerLogin from "../screens/scanner/Login";
 import More from "../screens/More";
 import News from "../screens/News";
 import Organisateur from "../screens/Organisateur";
@@ -15,6 +16,8 @@ import Videos from "../screens/Videos";
 import Code from "../screens/Code";
 import Search from "../screens/Search";
 import Pay from "../screens/pay";
+import Scanner from "../screens/scanner/Scanner";
+import DashBoard from "../screens/scanner/DashBoard";
 
 type Props = {};
 
@@ -37,6 +40,9 @@ export default function Navigation({}: Props) {
         <Route path="/eventDetail/:token" element={<EventDetail />} />
         <Route path="/code/:token" element={<Code />} />
         <Route path="/pay/:user/:event" element={<Pay />} />
+        <Route path="/scanner" element={<Scanner />} />
+        <Route path="/scanner/login/:user" element={<ScannerLogin />} />
+        <Route path="/scanner/dashboard" element={<DashBoard />} />
       </Routes>
     </BrowserRouter>
   );

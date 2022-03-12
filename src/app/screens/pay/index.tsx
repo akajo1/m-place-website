@@ -1,10 +1,15 @@
-import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import React, { useEffect, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import { image } from "../../assets";
 import SImage from "../../components/atoms/SImage";
 import { baseImage, billetTType, eventType } from "../../config";
-import { getBillett, getEvent } from "../../config/api";
-import { colors } from "../../styles/colors";
+import { cartePaie, getBillett, getEvent, mobilePaie, paiementCheck } from "../../config/api";
+import Lottie from 'react-lottie';
+import * as animationData from '../../assets/84272-loading-colour.json'
+import * as animationSuccess from '../../assets/87795-loading-success.json'
+import * as animationCancel from '../../assets/38993-ocl-canceled.json'
+import Navigation from "../../navigations";
+
 
 type Props = {};
 
@@ -14,11 +19,113 @@ const Pay = (props: Props) => {
   const [billets, setBillets] = useState<billetTType[]>([]);
   const [nbBillet, setNbBillet] = useState(0);
   const [tarif, setTarif] = useState('');
+  const [phone, setPhone] = useState('243');
+  const [load, setLoad] = useState(false);
+  const [success, setSuccess] = useState(false);
+  const [cancel, setCancel] = useState(false);
+  const [orderNumber, setorder] = useState('');
+  const [text, setText] = useState('');
+  const [tokenTarif, setTokenTarif] = useState('');
+const navigate = useNavigate()
+  const LoadAnimation = ()=>{
+    const buttonStyle = {
+      display: 'block',
+      margin: '10px auto'
+    };
+  
+    const defaultOptions = {
+      loop: true,
+      autoplay: true, 
+      animationData: animationData,
+      rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice'
+      }
+    };
+    return (
+      <div style={{position:'fixed',width:'100%',height:'100%',display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'#fff',left:0}}>
+
+      <div style={{textAlign:'center'}}>
+         <Lottie options={defaultOptions}
+              height={400}
+              width={400}
+             />
+             { text !='' &&<p style={{position:'relative',top:-100,padding:'0 30px'}}>{text}  </p>}
+         </div>
+         </div>
+    )
+  }
+
+  const onTarif = (tarif:string)=>{
+    billets.filter((item)=> {
+      if(item.prix.toString() == tarif){
+        setTokenTarif(item.token!)
+        setTarif(item.prix.toString())
+    }
+    }
+      )
+  }
+
+  const LoadSuccess = ()=>{
+    const buttonStyle = {
+      display: 'block',
+      margin: '10px auto'
+    };
+  
+    const defaultOptions = {
+      loop: true,
+      autoplay: true, 
+      animationData: animationSuccess,
+      rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice'
+      }
+    };
+    return (
+      <div style={{position:'fixed',width:'100%',height:'100%',display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'#fff',left:0}}>
+
+      <div style={{textAlign:'center'}}>
+         <Lottie options={defaultOptions}
+              height={400}
+              width={400}
+             />
+         </div>
+         </div>
+    )
+  }
+  
+  const LoadCancel = ()=>{
+    const buttonStyle = {
+      display: 'block',
+      margin: '10px auto'
+    };
+  
+    const defaultOptions = {
+      loop: true,
+      autoplay: true, 
+      animationData: animationCancel,
+      rendererSettings: {
+        preserveAspectRatio: 'xMidYMid slice'
+      }
+    };
+    return (
+      <div style={{position:'fixed',width:'100%',height:'100%',display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'#fff',left:0}}>
+
+      <div style={{textAlign:'center'}}>
+         <Lottie options={defaultOptions}
+              height={400}
+              width={400}
+             />
+         </div>
+         </div>
+    )
+  }
   useEffect(() => {
+    
     (async () => {
+      setLoad(true)
       if (event !== undefined) {
         await getEvent(event).then((response) => {
           getBillett(response.data.id).then((reponse) => {
+            setLoad(false)
             if (reponse.data != null) {
               setBillets(reponse.data);
             }
@@ -32,9 +139,59 @@ const Pay = (props: Props) => {
   useEffect(()=>{
     tarif =='' && (billets && billets.length > 0) && setTarif(billets[0].prix.toString())
   })
+const paiementMobile = ()=>{
+  setLoad(true)
+  const nn= nbBillet * parseInt(tarif)
+  if(events){
+    mobilePaie(phone,events?.titre,nn.toString(),user!,tokenTarif!,nbBillet.toString()!)
+    .then((reponse)=>{
+      setText('veuillez comfirmer le paiement en tapant votre mot de passe sur le pop-up afficher')
+      setTimeout(()=>{
+          paiementCheck(reponse.data.orderNumber)
+          .then((reponse)=>{
+            if(reponse.data.transaction !==null){
+              setLoad(false)
+              setSuccess(true)
+
+              setTimeout(()=>{
+                setSuccess(false)
+                navigate('/');
+              },3000)
+            }else{
+              setText('')
+              setLoad(false)
+              setCancel(true)
+
+              setTimeout(()=>{
+                setCancel(false)
+              },3000)
+            }
+          })
+      },20000)
+    })
+  }
+}
+const paiementCarte = ()=>{
+  if(event && user !=null && tokenTarif !=null){
+
+    const nn= nbBillet * parseInt(tarif)
+    if(events){
+      cartePaie(events.titre,nn.toString(),user,tokenTarif,nbBillet.toString()!)
+      .then((reponse)=>{
+        console.log(reponse.data)
+      })
+    }
+  }
+}
+
+
 
   return (
     <>
+        {load && <LoadAnimation/>}
+        {success && <LoadSuccess/>}
+        {cancel && <LoadCancel/>}
+         
       <div
         style={{
           width: "100%",
@@ -53,6 +210,7 @@ const Pay = (props: Props) => {
           />
         </div>
       </div>
+      
       <div
         style={{
           width: "100%",
@@ -61,6 +219,7 @@ const Pay = (props: Props) => {
           backgroundColor: "#fff",
         }}
       >
+        
         <div
           style={{
             backgroundColor: "#FFF",
@@ -92,6 +251,19 @@ const Pay = (props: Props) => {
             <h2 style={{ marginTop: 0 }}>{events?.titre}</h2>
             <h5 style={{ marginTop: 5 }}>{events?.organisateur}</h5>
           </div>
+          <div>
+            <SImage 
+              url={{
+                url:image.mobilemoney,
+                style:{
+                  width:"100%",
+                  height:30,
+                  objectFit:'cover',
+                  backgroundColor:'#00000042'
+                }
+              }}
+            />
+          </div>
           <div className="pay">
             <div className="form-control">
               <label htmlFor="">Nombre de billet</label>
@@ -108,7 +280,7 @@ const Pay = (props: Props) => {
                 name=""
                 id=""
                 className="input"
-                onChange={(input) => setTarif(input.target.value)}
+                onChange={(input) => onTarif(input.target.value)}
               >
                 {billets &&
                   billets.map((item, index) => (
@@ -120,28 +292,50 @@ const Pay = (props: Props) => {
             </div>
             <div className="form-control">
               <label htmlFor="">Numéro mobile money</label>
+              <blockquote>
+                a remplir que pour le paiement mobile
+              </blockquote>
               <input
                 type="text"
                 className="input"
-                placeholder="ex:0990753266"
+                placeholder="ex:24399XXXXXXX"
+                value={phone}
+                onChange={(input)=> setPhone(input.target.value)}
               />
               <blockquote>
-                le numero mobile money doit avoir 10 chiffres (ex:0990753266)
+                le numero mobile money doit avoir 10 chiffres (ex:24399XXXXXXX)
               </blockquote>
             </div>
           </div>
+          
           <div className="facture">
             <h3>FACTURE</h3>
             <p>NOMBRE BILLET : {nbBillet}</p>
             <p>TARIF: {tarif !='' ? tarif : (billets && billets.length > 0) && billets[0].prix } $ USD</p>
+            <h4>Acheter par carte</h4>
+            
           </div>
           <div className="paiement">
             <h4>TOTAL: {nbBillet * parseInt(tarif)} $</h4>
+            <div style={{cursor:'pointer'}} onClick={()=> paiementCarte()}>
+            <SImage 
+              url={{
+                url:image.carte,
+                style:{
+                  width:"100%",
+                  height:30,
+                  objectFit:'cover',
+                  backgroundColor:'#eee'
+                }
+              }}
+            />
+          </div>
             <p>
               <small>La demande de paiement sera envoyé</small>
             </p>
-            <button>Payer</button>
+            <button onClick={()=>paiementMobile()}>Payer</button>
           </div>
+         
         </div>
       </div>
     </>

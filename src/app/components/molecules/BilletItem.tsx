@@ -11,14 +11,14 @@ type Props = {
 export default function BilletItem({billet}: Props) {
     const navigate = useNavigate()
   return (
-    <div style={{display:'flex',backgroundColor:colors.darkLight,padding:'10px',borderRadius:30,alignItems:'center',cursor:'pointer'}} onClick={()=> navigate('/code/'+billet.token)}>
+    <div style={{display:'flex',backgroundColor:colors.darkLight,padding:'10px',borderRadius:30,alignItems:'center',cursor:'pointer',marginBottom:10}} onClick={()=> navigate('/code/'+billet.token)}>
     <div style={{backgroundColor:colors.black,width:60, height:60,borderRadius:30,display:'flex',justifyContent:'center',alignItems:'center',marginRight:15}}>
       <ImQrcode color={colors.white} size={24}/>
     </div>
     <div>
       <h3 style={{color:colors.white}}>{billet.evenement}</h3>
-      <h5 style={{color:'#ccc'}}>prévu pour le {billet.date} à {billet.heure}</h5>
-      <h3 style={{color:colors.second}}>{billet.prix}$ USD</h3>
+      <h5 style={{color:'#ccc',fontSize:11,fontWeight:'normal'}}>prévu pour le {billet.date} à {billet.heure}</h5>
+      <h4 style={{color:colors.second}}>{billet.prix}$ USD</h4>
     </div>
   </div>
   )

@@ -31,9 +31,10 @@ const logout = ()=>{
             setInfo(reponse)
 
             getBillets(reponse.id)
-            .then((response)=>{
-              const reponse = response.data;
-              setBillets(reponse)
+            .then((responses)=>{
+              const reponses = responses.data;
+              setBillets(reponses)
+             
             })
           })
         }else {
@@ -42,8 +43,8 @@ const logout = ()=>{
         }
       }
     )();
-  },[])
-  console.log(billets)
+  },[billets])
+  
   return (
     <div style={{ width: '100%', position: 'relative' }}>
       <SImage
