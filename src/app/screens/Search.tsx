@@ -37,7 +37,6 @@ const Search: React.FC<Props> = (props) => {
       setError("vous devez tapez un mot clé avant de cliquer");
     }
   };
-  console.log(result);
   if (error != "") {
     setTimeout(() => {
       setError("");
@@ -153,19 +152,23 @@ const Search: React.FC<Props> = (props) => {
           </div>
         </div>
 
-        <div
-          style={{
-            height: "70vh",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
-            width: "100%",
-          }}
-        >
+       
           {search.length > 0 ? (
+             <div
+             style={{
+              
+               display: "flex",
+               flexDirection:'column',
+               alignItems: "center",
+               justifyContent: "center",
+               width: "100%",
+             }}
+           >
+             {
             result.length > 0 &&
-            result.map((item, index) => <EventItem item={item} key={index} />)
-          ) : (
+            result.map((item, index) => <EventItem item={item} key={index} />) }
+          </div>)
+          : (
             <div
               style={{
                 height: "70vh",
@@ -204,7 +207,7 @@ const Search: React.FC<Props> = (props) => {
               </p>
             </div>
           )}
-        </div>
+        
       </div>
     </div>
   );

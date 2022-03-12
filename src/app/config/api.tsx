@@ -67,3 +67,7 @@ export const scanLogin = (event:string,password:string)=>{
 export const scanCode = (event:string,billet:string)=>{
    return axios.get('/mobile/checkbillet/'+encodeURI(billet)+'/'+encodeURI(event))
 }
+
+export const checkBillet = (billet:string,event:string)=>{
+   return axios.get('/mobile/checkbillet/'+encodeURI(billet)+'/'+encodeURI(event))
+}

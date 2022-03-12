@@ -14,7 +14,7 @@ export default function Login({}: Props) {
     if(e.keyCode == 13) e.preventDefault()
   })
   const user= localStorage.getItem('mplace-user')
-  const [username,setUsername]= useState<string>('')
+  const [username,setUsername]= useState<string>('+243')
   const [password,setPassword]= useState<string>('')
   const [error,setError]= useState<string>('')
   const [load,setLoad]= useState(false)
