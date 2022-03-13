@@ -86,6 +86,25 @@ export default function Scanner({}: Props) {
         <div style={{ textAlign: "center" }}>
           <Lottie options={defaultOptions} height={100} width={100} />
           <p style={{ fontSize: 12 }}>Qrcode non trouvé ou déjà utilisé </p>
+          <div style={{display:'flex',justifyContent:'center',alignItems:'center',marginTop:10}}>
+          <div
+                style={{
+                  backgroundColor: colors.black,
+                  color: colors.white,
+                  width: 170,
+                  height: 30,
+                  borderRadius: 30,
+                  textAlign: "center",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+                onClick={()=> navigate('/scanner/dashboard')}
+              >
+                <BsChevronLeft /> Tableau de bord
+              </div>
+          </div>
+
         </div>
       )}
       {error === null && data === null && (

@@ -18,6 +18,7 @@ import Search from "../screens/Search";
 import Pay from "../screens/pay";
 import Scanner from "../screens/scanner/Scanner";
 import DashBoard from "../screens/scanner/DashBoard";
+import AskPaie from "../screens/scanner/AskPaie";
 
 type Props = {};
 
@@ -43,6 +44,7 @@ export default function Navigation({}: Props) {
         <Route path="/scanner" element={<Scanner />} />
         <Route path="/scanner/login/:user" element={<ScannerLogin />} />
         <Route path="/scanner/dashboard" element={<DashBoard />} />
+        <Route path="/scanner/askpaie" element={<AskPaie />} />
       </Routes>
     </BrowserRouter>
   );

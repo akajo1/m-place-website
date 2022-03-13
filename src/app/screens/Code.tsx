@@ -33,11 +33,13 @@ export default function Code({}: Props) {
     .then(response=>{
       setLoad(false)
       const reponse = response.data
-        if(reponse !=null){
+        if(reponse !=''){
           setBillet(reponse)
           Qrcode.toDataURL(reponse.token).then((data)=>{
             setSrc(data)
           })
+        }else{
+          navigate(-1)
         }
     })
   },[])

@@ -71,3 +71,23 @@ export const scanCode = (event:string,billet:string)=>{
 export const checkBillet = (billet:string,event:string)=>{
    return axios.get('/mobile/checkbillet/'+encodeURI(billet)+'/'+encodeURI(event))
 }
+export const getOrgStat = (token:string,event:string)=>{
+   return axios.get('/mobile/billet_vendu_somme/'+encodeURI(token)+'/'+encodeURI(event))
+}
+
+export const getOrgBillet = (token:string,event:string)=>{
+   return axios.get('/mobile/billet_scanner/'+encodeURI(token)+'/'+encodeURI(event))
+}
+
+export const getPourcentage = ()=>{
+   return axios.get('/mobile/pourcentage')
+}
+
+export const askpaie = (manager:string,id_event:string,numero:string,montant:string)=>{
+   return axios.post('/mobile/demande_paie',{
+      organisateur:manager,
+      numero,
+      montant,
+      event:id_event
+   })
+}
