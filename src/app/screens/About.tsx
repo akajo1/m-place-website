@@ -69,7 +69,7 @@ export default function About({}: Props) {
      
       <div style={{color:colors.white,padding:'0 30px',marginBottom:30}}>
         <h1 style={{marginBottom:15}}>Mot du fondateur</h1>
-        <p style={{textAlign:'justify'}}>
+        <p style={{textAlign:'left',marginBottom:20}}>
         En tant que solution innovante et précurseur sur le marché kinois, m-place.events s'installe dans une agglomération où il est à ce jour en fonction exclusive et dominante.<br/><br/>
 
  Dans une ville où la capillarité de la téléphonie mobile et des NTIC s'en vont croissant, une démographie toujours en hausse, la gestion d'événementiel et des données (Data) l'avenir du E-commerce. <br/><br/>
