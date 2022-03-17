@@ -19,7 +19,7 @@ export default function LazyAnimate({}: Props) {
         }
       };
   return (
-    <div style={{position:'fixed',top:0,left:0,width:'100%',height:'100%',zIndex:1000,backgroundColor:'#00000099',display:'flex',alignItems:'center',justifyContent:'center'}}>
+    <div style={{position:'fixed',top:0,left:0,width:'100%',height:'100%',zIndex:1000,backgroundColor:'#000000',display:'flex',alignItems:'center',justifyContent:'center'}}>
         <Lottie options={defaultOptions}
               height={200}
               width={200}

@@ -12,7 +12,8 @@ export default function Login({}: Props) {
     const [password,setPassword]=useState('')
     const [event,setEvent]= useState<eventType>()
     const [error,setError]= useState('')
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    
     useEffect(()=>{
         (async ()=>{
             if(user !== undefined){
@@ -41,6 +42,11 @@ export default function Login({}: Props) {
             setError('vous devez taper votre mot de passe')
         }
     }
+    useEffect(()=>{
+        if(user == null || undefined){
+            navigate('/')
+        }
+    })
   return (
   <>
     <SImage

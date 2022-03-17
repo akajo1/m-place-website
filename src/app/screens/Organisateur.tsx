@@ -46,22 +46,22 @@ export default function Organisateur({}: Props) {
       </div>
       <div style={{color:colors.white}}>
       <h1 style={{marginBottom:20}}>Equipe Commerciale </h1>
-<p style={{textAlign:'justify',marginBottom:13}}>
+<p style={{textAlign:'left',marginBottom:13}}>
 Vous êtes organisateur ? Contactez notre équipe commerciale et nos experts pour en savoir plus sur les solutions M-PLACE.EVENTS
 </p>
-<div style={{textAlign:'justify',marginBottom:13,display:'flex',alignItems:'center'}}>
+<div style={{textAlign:'left',marginBottom:13,display:'flex',alignItems:'center'}}>
 <FaMapMarkerAlt size={22} color={colors.second} style={{marginRight:5}}/> <div className="">
   <p> Immeuble Anciennes Galeries Présidentielles, Deuxième niveau, Local 2 M13, Kinshasa – Gombe. </p>
 </div>
 </div>
 
-<div style={{textAlign:'justify',marginBottom:13,display:'flex',alignItems:'center'}}>
+<div style={{textAlign:'left',marginBottom:13,display:'flex',alignItems:'center'}}>
 <BsTelephoneFill size={22} style={{marginRight:5,color:colors.second}}/> 
 <div className="">
   <p> <span>+243 850 953 135</span> <br/> <span>+243 816 712 981</span> </p>
 </div>
 </div>
-<p style={{textAlign:'justify',marginBottom:13,cursor:'pointer',display:'flex',alignItems:'center'}} onClick={()=> document.location='mailto:bonjour@m-place.events'}>
+<p style={{textAlign:'left',marginBottom:13,cursor:'pointer',display:'flex',alignItems:'center'}} onClick={()=> document.location='mailto:bonjour@m-place.events'}>
 <FaEnvelope style={{marginRight:5,color:colors.second}}/>bonjour@m-place.events
 </p>
 

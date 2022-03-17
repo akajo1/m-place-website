@@ -1,5 +1,5 @@
-export const baseUrl = 'http://172.20.10.3:3000/'
-export const baseImage = 'http://192.168.43.139:8888/fileup/'
+export const baseUrl = 'https://api.m-place.events/'
+export const baseImage = 'https://uploads.m-place.events/fileup/'
 export type imageType={
     id:number,
     image: string

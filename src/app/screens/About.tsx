@@ -11,7 +11,7 @@ export default function About({}: Props) {
   const navigate = useNavigate();
   return (
     <>
-      <div style={{ padding: "20px 30px" }}>
+      <div style={{ padding: "20% 30px" }}>
         <div
           style={{
             width: 40,
@@ -34,29 +34,29 @@ export default function About({}: Props) {
           <h1 style={{ marginBottom: 20 }}>
             Créé par des Spécialistes du Numérique, pour les organisateurs,{" "}
           </h1>
-          <p style={{ textAlign: "justify", marginBottom: 13 }}>
+          <p style={{ textAlign: "left", marginBottom: 13 }}>
             M-PLACE.EVENTS est une start-up congolaise créée en Février 2022,
             par le groupe de Conseil en Communication intégré FENNEC CD, basé à
             Kinshasa, comptant une dizaine de passionnés avec un fort ADN
             Digital.
           </p>
-          <p style={{ textAlign: "justify", marginBottom: 13 }}>
+          <p style={{ textAlign: "left", marginBottom: 13 }}>
             M-PLACE est la première solution numérique offrant les services de
             Billetterie en ligne, Live, Gestion d’Accès, Gestion d’Inscription,
             Invitations, à destination des organisateurs d’événements en
             République démocratique du Congo.
           </p>
-          <p style={{ textAlign: "justify", marginBottom: 13 }}>
+          <p style={{ textAlign: "left", marginBottom: 13 }}>
             Simple, rapide et Sécurisé, la solution est accessible gratuitement,
             peut être télécharger sur Play Store et IOS.
           </p>
-          <p style={{ textAlign: "justify", marginBottom: 13 }}>
+          <p style={{ textAlign: "left", marginBottom: 13 }}>
             Elle permet de créer son événement sur mesure, de proposer des
             billets ou invitations en ligne, de faire des live, de promouvoir
             son événement et de gérer le contrôle d’accès le jour J.
           </p>
           <h1 style={{ marginBottom: 20 }}>Une relation de proximité</h1>
-          <p style={{ textAlign: "justify", marginBottom: 13 }}>
+          <p style={{ textAlign: "left", marginBottom: 13 }}>
             La qualité de notre accompagnement est garantie par la présence de
             notre bureau physique. Nos équipes sont présentes en temps réel pour
             répondre à toutes sortes de questions.

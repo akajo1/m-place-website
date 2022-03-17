@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import WhatsappFloating from '../components/atoms/WhatsappFloating';
 import HeaderBar from '../components/molecules/HeaderBar';
 import LazyAnimate from '../components/molecules/LazyAnimate';
 import BottomTab from '../components/organisms/BottomTab';
@@ -61,6 +62,7 @@ const Home = (props: Props) => {
       <PubOrg lists={pubs}/>
       <EventList lists={events}/>
       </div>
+      <WhatsappFloating/>
       <BottomTab active='/'/>
     </div>
   )

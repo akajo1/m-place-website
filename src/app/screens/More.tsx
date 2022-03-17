@@ -14,7 +14,7 @@ const More = (props: Props) => {
     <div className=''>
       <HeaderBar/>
 <div className="more">
-<h1 style={{ color: colors.second, fontWeight: "700" ,marginBottom:15,marginTop:10}}>Vous voulez en savoir plus ?</h1>
+<h1 style={{ color: colors.second, fontWeight: "700" ,marginBottom:15,marginTop:'10%'}}>Vous voulez en savoir plus ?</h1>
 <ul className="listMenu">
     <li onClick={()=> navigate('/about')}>A Propos de Nous</li>
     <li onClick={()=> navigate('/organisateur')}>Devenir Organisateur</li>
@@ -40,8 +40,9 @@ const More = (props: Props) => {
     </li>
     <li>
     <div style={{textAlign:'justify',marginBottom:13,display:'flex',alignItems:'center'}}>
-<FaMapMarkerAlt size={22} color={colors.second} style={{marginRight:5}}/> <div className="">
-  <p> Immeuble Anciennes Galeries Présidentielles, Deuxième niveau, Local 2 M13, Kinshasa – Gombe. </p>
+<FaMapMarkerAlt size={22} color={colors.second} style={{marginRight:5}}/> 
+<div className="">
+  <p style={{textAlign:'left'}}> Immeuble Anciennes Galeries Présidentielles, Deuxième niveau, Local 2 M13, Kinshasa – Gombe. </p>
 </div>
 </div>
 
