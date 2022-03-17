@@ -3,6 +3,7 @@ import { BsChevronLeft } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
 import { image } from "../assets";
 import SImage from "../components/atoms/SImage";
+import Helmet from "../components/molecules/Helmet";
 import { colors } from "../styles/colors";
 
 type Props = {};
@@ -12,6 +13,8 @@ export default function About({}: Props) {
   return (
     <>
       <div style={{ padding: "20% 30px" }}>
+      <Helmet title={'A propos'} description={''} />
+
         <div
           style={{
             width: 40,

@@ -9,6 +9,7 @@ import {GiTicket} from 'react-icons/gi';
 import {useNavigate, useParams} from 'react-router-dom';
 import { getBillett, getEvent } from '../config/api';
 import { baseImage, baseUrl, billetTType, eventType } from '../config';
+import Helmet from '../components/molecules/Helmet';
 type Props = {}
 
 
@@ -40,6 +41,8 @@ export default function EventDetail({}: Props) {
    
   return (
    <div className="eventDetail">
+              <Helmet title={event?.titre!} description={event?.description!} image={event?.cover!}/>
+
        <div style={{position:'absolute',width:80,height:80,borderRadius:40,backgroundColor:'#000000ce',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:'700',top:20,left:20,cursor:'pointer'}} onClick={()=> navigate(-1)}>
            <BsChevronLeft  color={colors.white} size={24}/>
        </div>

@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import HeaderBar from '../components/molecules/HeaderBar';
+import Helmet from '../components/molecules/Helmet';
 import LazyAnimate from '../components/molecules/LazyAnimate';
 import BottomTab from '../components/organisms/BottomTab';
 import VideoList from '../components/organisms/VideoList';
@@ -27,6 +28,8 @@ const Videos = () => {
     },[])
   return (
     <div className=''>
+             <Helmet title={'Vidéos'} description={"moment fort m-place en vidéo"} />
+
       <HeaderBar/>
       {load && <LazyAnimate/>}
 

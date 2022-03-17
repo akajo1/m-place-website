@@ -63,6 +63,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-helmet": "^6.1.5",
     "@types/styled-components": "^5.1.23",
     "react-seo": "^1.0.11",
     "react-slick": "^0.28.1"
