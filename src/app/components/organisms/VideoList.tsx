@@ -9,13 +9,13 @@ type Props = {
 
 export default function VideoList({ lists }: Props) {
   return (
-    <div className="articles">
+    <div className="articles" style={{paddingBottom:'20%'}}>
       <h1
         style={{
           color: colors.white,
           fontWeight: "700",
           marginBottom: 15,
-          marginTop: 10,
+          paddingTop: '10%',
         }}
       >
         Vidéos

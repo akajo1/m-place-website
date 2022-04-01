@@ -47,10 +47,10 @@ export const fetchSearch = async (search:string)=>{
    return axios.get('/mobile/search/'+encodeURI(search)) 
 }
 
-export const mobilePaie = (phone:string,reference:string,amount:string,user:string,tokenTarif:string,nbBillet:string,currency:string="CDF")=>{
+export const mobilePaie = (phone:string,reference:string,amount:string,user:string,tokenTarif:string,nbBillet:string,currency:string="USD")=>{
    return axios.post('/paie/mobilemoney',{phone,reference,amount,currency,user,tokenTarif,quantite:nbBillet})
 }
-export const cartePaie = (reference:string,amount:string,user:string,tokenTarif:string,billet:string,currency:string="CDF")=>{
+export const cartePaie = (reference:string,amount:string,user:string,tokenTarif:string,billet:string,currency:string="USD")=>{
    return axios.post('/paie/card',{reference,amount,currency,user,tokenTarif,quantite:billet})
 }
 

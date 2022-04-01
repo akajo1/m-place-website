@@ -9,8 +9,8 @@ type Props = {
 
 export default function ArticlesList({lists}: Props) {
   return (
-    <div className="articles">
-      <h1 style={{ color: colors.white, fontWeight: "700" ,marginBottom:15,marginTop:10}}>Articles</h1>
+    <div className="articles" style={{paddingBottom:'20%'}}>
+      <h1 style={{ color: colors.white, fontWeight: "700" ,marginBottom:15,paddingTop:'10%'}}>Articles</h1>
         {
             lists.length > 0 && lists.map((item,index)=>    <ArticleItem item={item} key={index}/>)
         }

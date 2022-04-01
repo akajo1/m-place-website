@@ -149,7 +149,8 @@ const paiementMobile = ()=>{
       setTimeout(()=>{
           paiementCheck(reponse.data.orderNumber)
           .then((reponse)=>{
-            if(reponse.data.transaction !==null){
+            const {data} = reponse;
+            if(data.transaction && data.transaction.status == '0'){
               setLoad(false)
               setSuccess(true)
 

@@ -12,12 +12,12 @@ export default function PubOrg({lists}: Props) {
   var settings = {
     dots: true,
     infinite: true,
-    speed: 1500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoPlay: true,
-    autoplaySpeed: 2000,
-    cssEase: "linear",
+    autoplay: true,
+    speed: 500,
+    autoplaySpeed: 4000,
+    cssEase: "linear"
   };
   return (
     <Slider {...settings} className="pub__container">
