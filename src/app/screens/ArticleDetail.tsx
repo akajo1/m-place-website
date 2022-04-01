@@ -5,27 +5,38 @@ import { colors } from '../styles/colors';
 import {useNavigate, useParams} from 'react-router-dom'
 import { articleType } from '../config';
 import { getNew } from '../config/api';
+import LazyAnimate from '../components/molecules/LazyAnimate';
 import Helmet from '../components/molecules/Helmet';
+
 type Props = {}
 
 export default function ArticleDetail({}: Props) {
     const navigate = useNavigate()
     const {token} = useParams()
     const [article, setArticle]= useState<articleType>()
+    const [load, setLoad]= useState(true)
 
     useEffect(()=>{
         (async ()=>{
+            setLoad(true)
             if(token !== undefined){
                 await getNew(token).
                 then((response)=>{
                     setArticle(response.data)
+                    setLoad(false)
                 })
             }
         })()
     },[])
   return (
    <div className="eventDetail">
-       <Helmet title={article?.titre!} description={article?.description!} image={article?.image!}/>
+             <Helmet title={article?.titre!} description={article?.description!} image={article?.image!}/>
+
+       {
+           load && <LazyAnimate/>
+       }
+
+
        <div style={{position:'absolute',width:80,height:80,borderRadius:40,backgroundColor:'#000000ce',display:'flex',alignItems:'center',justifyContent:'center',fontWeight:'700',top:20,left:20,cursor:'pointer'}} onClick={()=> navigate(-1)}>
            <BsChevronLeft  color={colors.white} size={24}/>
        </div>
@@ -34,8 +45,10 @@ export default function ArticleDetail({}: Props) {
                 url:''+ article?.image,
                 style:{
                     width:'100%',
-                    height:'60vh',
-                    objectFit:'cover'
+                    height:'300px',
+                    objectFit:'cover',
+                    borderBottomLeftRadius: 30,
+                    borderBottomRightRadius: 30,
                 }
             }}
        />

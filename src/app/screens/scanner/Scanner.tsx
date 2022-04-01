@@ -58,7 +58,7 @@ export default function Scanner({}: Props) {
     <div style={{ backgroundColor: "#fff", width: "100%", height: "100vh" }}>
       {data == null && (
         <QrReader
-          constraints={{ facingMode: "user" }}
+          constraints={{ facingMode: "environment" }}
           onResult={(result, error) => {
             if (!!result) {
               setLoad(true);

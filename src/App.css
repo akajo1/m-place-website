@@ -59,15 +59,13 @@ body{
 .link:hover{
 background-color: var(--black);
 }
-.container{
-  padding-top: 18%;
-  padding-left: 10px;
-  padding-right: 10px;
+.container,.articles{
+  padding: 24% 10px;
 }
 .pub__container{
   width: 100%;
   display: flex;
-  overflow-x: hidden;
+  overflow: hidden;
   margin-bottom: 20px;
 }
 .pub__container .pubItem{
@@ -75,6 +73,7 @@ width: 98%;
 height: 150px;
 background-color: var(--dark);
 border-radius: 20px;
+
 }
 .eventList{
   margin-top: 10px;
@@ -162,6 +161,7 @@ border-radius: 20px;
   padding-right: 10px;
   padding-left: 10px;
   padding-bottom: 15%;
+
 }
 .articles .articleItem{
   cursor: pointer;

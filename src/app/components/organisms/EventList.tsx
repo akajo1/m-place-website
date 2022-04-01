@@ -10,7 +10,7 @@ type Props = {
 
 export default function EventList({lists}: Props) {
   return (
-    <div className="eventList">
+    <div className="eventList" style={{paddingBottom:'20%'}}>
         <h3 className="title__h3"><MdEventNote color={colors.white} size={23}/>  <span style={{fontWeight:'700',marginRight:10}}>Evénèments</span> <span style={{fontWeight:'normal'}}>Récents</span></h3>
         
         {
