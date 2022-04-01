@@ -9,6 +9,7 @@ import * as animationData from '../../assets/84272-loading-colour.json'
 import * as animationSuccess from '../../assets/87795-loading-success.json'
 import * as animationCancel from '../../assets/38993-ocl-canceled.json'
 import Navigation from "../../navigations";
+import Helmet from "../../components/molecules/Helmet";
 
 
 type Props = {};
@@ -43,6 +44,7 @@ const navigate = useNavigate()
     };
     return (
       <div style={{position:'fixed',width:'100%',height:'100%',display:'flex',alignItems:'center',justifyContent:'center',backgroundColor:'#fff',left:0}}>
+       <Helmet title={"Achat billet"} description={"acheter en toute sécurité votre billet et recevez le à l'instant!!"} />
 
       <div style={{textAlign:'center'}}>
          <Lottie options={defaultOptions}

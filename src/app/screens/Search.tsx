@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { image } from "../assets";
 import SImage from "../components/atoms/SImage";
 import EventItem from "../components/molecules/EventItem";
+import Helmet from "../components/molecules/Helmet";
 import LazyAnimate from "../components/molecules/LazyAnimate";
 import OnLoad from "../components/molecules/OnLoad";
 import { fetchSearch } from "../config/api";
@@ -44,6 +45,8 @@ const Search: React.FC<Props> = (props) => {
   }
   return (
     <div style={{ color: colors.white, width: "100%" }}>
+             <Helmet title={"Recherche"} description={"Un évenement particulier vous interesse? faite votre recherche"}/>
+
       {load && <LazyAnimate />}
       <div
         style={{

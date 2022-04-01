@@ -6,12 +6,15 @@ import {BsTelephoneFill, BsWhatsapp,BsYoutube} from 'react-icons/bs';
 import {AiFillInstagram} from 'react-icons/ai';
 import {FaEnvelope, FaFacebook, FaMapMarkerAlt} from 'react-icons/fa';
 import {useNavigate} from 'react-router-dom'
+import Helmet from '../components/molecules/Helmet';
 type Props = {}
 
 const More = (props: Props) => {
     const navigate= useNavigate()
   return (
     <div className=''>
+             <Helmet title={'Plus'} description={"Vous voulez en savoir plus, nous parlons de nous"}/>
+
       <HeaderBar/>
 <div className="more">
 <h1 style={{ color: colors.second, fontWeight: "700" ,marginBottom:15,marginTop:'10%'}}>Vous voulez en savoir plus ?</h1>
