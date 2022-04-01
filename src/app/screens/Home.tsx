@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import WhatsappFloating from '../components/atoms/WhatsappFloating';
 import HeaderBar from '../components/molecules/HeaderBar';
+import Helmet from '../components/molecules/Helmet';
 import LazyAnimate from '../components/molecules/LazyAnimate';
 import BottomTab from '../components/organisms/BottomTab';
 import EventList from '../components/organisms/EventList';

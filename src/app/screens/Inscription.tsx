@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import SImage from "../components/atoms/SImage";
 import { image } from "../assets";
 import { addUser } from "../config/api";
+import Helmet from "../components/molecules/Helmet";
 type Props = {};
 
 export default function Inscription({}: Props) {
@@ -46,6 +47,8 @@ if(user !==null) {navigate('/')}
 
   return (
     <div className="login">
+             <Helmet title={"Inscription"} description={"Inscrivez vous pour profiter pleinement de nos fonctionnalités"}/>
+
       <div className="mask"></div>
       
       <div style={{ zIndex: 10, position: "relative" }}>

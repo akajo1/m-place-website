@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { BsChevronLeft } from "react-icons/bs";
 import { useNavigate } from "react-router-dom";
+import Helmet from "../../components/molecules/Helmet";
 import { eventType } from "../../config";
 import { askpaie, getEvent, getOrgStat, getPourcentage } from "../../config/api";
 import { colors } from "../../styles/colors";
@@ -55,6 +56,8 @@ export default function AskPaie({}: Props) {
   }
   return (
     <div style={{ backgroundColor: "#fff", minHeight: "100vh", width: "100%" }}>
+             <Helmet title={"paie moi"} description={"faite une demande de paiement pour récuperer votre due"} />
+
       <div
         style={{
           width: 80,

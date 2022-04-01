@@ -3,6 +3,7 @@ import { ImQrcode } from "react-icons/im";
 import { useNavigate } from "react-router-dom";
 import { image } from "../../assets";
 import SImage from "../../components/atoms/SImage";
+import Helmet from "../../components/molecules/Helmet";
 import { eventType } from "../../config";
 import { getEvent, getOrgBillet, getOrgStat } from "../../config/api";
 import { colors } from "../../styles/colors";
@@ -63,6 +64,8 @@ export default function DashBoard({}: Props) {
           borderRadius: 10,
         }}
       >
+               <Helmet title={"Organisateur"} description={"Gerer votre événement jusqu'à sa réalisation"} />
+
         <h2>{montant}</h2>
         <h6 style={{ fontWeight: "normal", color: "#aaa" }}>{text}</h6>
       </div>

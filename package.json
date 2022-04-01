@@ -22,6 +22,7 @@
     "react-devtools": "^4.23.0",
     "react-dom": "^17.0.2",
     "react-floating-whatsapp": "^4.0.5",
+    "react-helmet": "^6.1.0",
     "react-icons": "^4.3.1",
     "react-lottie": "^1.2.3",
     "react-qr-reader": "^3.0.0-beta-1",
@@ -38,8 +39,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "PORT=2678 react-scripts start",
-    "build": "PORT=2678 react-scripts build",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
@@ -62,6 +63,7 @@
     ]
   },
   "devDependencies": {
+    "@types/react-helmet": "^6.1.5",
     "@types/styled-components": "^5.1.23",
     "react-seo": "^1.0.11",
     "react-slick": "^0.28.1"

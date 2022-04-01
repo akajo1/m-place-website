@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import HeaderBar from '../components/molecules/HeaderBar';
+import Helmet from '../components/molecules/Helmet';
 import LazyAnimate from '../components/molecules/LazyAnimate';
 import ArticlesList from '../components/organisms/ArticlesList';
 import BottomTab from '../components/organisms/BottomTab';
@@ -27,6 +28,8 @@ const News = (props: Props) => {
     },[])
   return (
     <div className=''>
+             <Helmet title={"Articles"} description={"Quoi de neuf aujourd'ui sur m-place"}/>
+
       <HeaderBar/>
       {load && <LazyAnimate/>}
       <ArticlesList lists={arts}/>
