@@ -30,8 +30,10 @@ export default function ArticleDetail({}: Props) {
     },[])
   return (
    <div className="eventDetail">
-             <Helmet title={article?.titre!} description={article?.description!} image={article?.image!}/>
+{
+    article && <Helmet title={article.titre} description={article.description} image={article.image}/>
 
+}
        {
            load && <LazyAnimate/>
        }
