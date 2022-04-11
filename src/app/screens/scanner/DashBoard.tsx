@@ -66,7 +66,7 @@ export default function DashBoard({}: Props) {
       >
                <Helmet title={"Organisateur"} description={"Gerer votre événement jusqu'à sa réalisation"} />
 
-        <h2>{montant}</h2>
+        <h2>{((montant)? montant :"0")}</h2>
         <h6 style={{ fontWeight: "normal", color: "#aaa" }}>{text}</h6>
       </div>
     );
@@ -152,7 +152,7 @@ export default function DashBoard({}: Props) {
         {stats !== null && DashItem(stats?.billet_vendu, "billet acheter")}
         {stats !== null && DashItem(stats.billet_restant, "billet restant")}
         {stats !== null &&
-          DashItem(stats.somme + " $", "revenu actuellement générer")}
+          DashItem((stats.somme) + " $", "revenu actuellement générer")}
 
         <h3 style={{ marginBottom: 20 }}>Billet scanner</h3>
 
@@ -205,7 +205,7 @@ export default function DashBoard({}: Props) {
             </div>
           ))}
 
-        <div style={{ position: "fixed", bottom: 20, right: 60 }}>
+        <div style={{ position: "fixed", bottom: 20, right:30 }}>
           <div
             style={{
               backgroundColor: colors.black,

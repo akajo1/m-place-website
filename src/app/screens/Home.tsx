@@ -58,7 +58,7 @@ const Home = (props: Props) => {
       <div className="container">
         {load && <LazyAnimate/>}
       {
-               error !=null &&  <div style={{backgroundColor:colors.success,color:colors.white,padding:'10px 20px',borderRadius:20,width:'90%',margin:'0 auto',textAlign:'center'}}>{error}</div>
+               error &&  <div style={{backgroundColor:colors.success,color:colors.white,padding:'10px 20px',borderRadius:20,width:'90%',margin:'0 auto',textAlign:'center'}}>{error}</div>
            }
       <PubOrg lists={pubs}/>
       <EventList lists={events}/>

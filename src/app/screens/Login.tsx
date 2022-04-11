@@ -1,4 +1,4 @@
-import React, { FormEvent, FormEventHandler, useEffect, useState } from "react";
+ import React, { FormEvent, FormEventHandler, useEffect, useState } from "react";
 import { BsChevronLeft } from "react-icons/bs";
 import { colors } from "../styles/colors";
 import { useNavigate } from "react-router-dom";
@@ -29,8 +29,8 @@ export default function Login({ }: Props) {
         .then((response) => {
           const reponse = response.data;
           setLoad(false)
-          if (reponse.erreur && reponse.erreur != '') {
-            setError(reponse.erreur)
+          if (!reponse) {
+            setError('mot de passe ou numéro incorrect');
           } else {
             localStorage.removeItem('mplace-user')
             localStorage.setItem('mplace-user', reponse.token)

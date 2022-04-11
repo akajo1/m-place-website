@@ -124,20 +124,15 @@ export default function AskPaie({}: Props) {
           demander un paiement
         </button>
       </div>
-      <div style={{marginTop:30,padding:'0 20px',color:colors.white}}>
+     {/* <div style={{marginTop:30,padding:'0 20px',color:colors.white}}>
           <h3>Historique de paiement</h3>
           <div style={{padding:'10px 0'}}>
-              <p style={{backgroundColor:colors.success,borderBottomRightRadius:20,padding:10,marginBottom:15,color:colors.white}}>
+             { <p style={{backgroundColor:colors.success,borderBottomRightRadius:20,padding:10,marginBottom:15,color:colors.white}}>
                   vous avez reçu un paiement de 2800 $ sur le numero 08278554322
-              </p>
-              <p style={{backgroundColor:colors.success,borderBottomRightRadius:20,padding:10,marginBottom:15,color:colors.white}}>
-                  vous avez reçu un paiement de 1500 $ sur le numero 08278554322
-              </p>
-              <p style={{backgroundColor:colors.success,borderBottomRightRadius:20,padding:10,marginBottom:15,color:colors.white}}>
-                  vous avez reçu un paiement de 200 $ sur le numero 08278554322
-              </p>
+              </p>}
+              
           </div>
-      </div>
+      </div>*/}
     </div>
   );
 }
