@@ -143,7 +143,7 @@ const navigate = useNavigate()
   })
 const paiementMobile = ()=>{
   setLoad(true)
-  const nn= nbBillet * parseInt(tarif)
+  const nn= nbBillet * parseFloat(tarif)
   if(events){
     mobilePaie(phone,events?.titre,nn.toString(),user!,tokenTarif!,nbBillet.toString()!)
     .then((reponse)=>{
@@ -288,7 +288,7 @@ const paiementCarte = ()=>{
                 {billets &&
                   billets.map((item, index) => (
                     <option value={item.prix} key={index}>
-                      {item.prix} $ USD ({item.tarifs})
+                      {item.prix} $ USD {item.tarifs && `(${item.tarifs})`}
                     </option>
                   ))}
               </select>
@@ -319,7 +319,7 @@ const paiementCarte = ()=>{
             
           </div>
           <div className="paiement">
-            <h4>TOTAL: {nbBillet * parseInt(tarif)} $</h4>
+            <h4>TOTAL: {nbBillet * parseFloat(tarif)} $</h4>
             <div style={{cursor:'pointer'}} onClick={()=> paiementCarte()}>
             <SImage 
               url={{

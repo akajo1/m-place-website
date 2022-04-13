@@ -44,7 +44,7 @@ export default function DashBoard({}: Props) {
     })();
   }, []);
   useEffect(() => {
-    if (users == null || undefined) {
+    if (!users) {
       navigate("/");
     }
   });

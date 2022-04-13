@@ -76,7 +76,7 @@ export default function EventDetail({}: Props) {
            <li style={{listStyle:'none',marginBottom:10}}>
                <GiTicket/> Billet <br/>
                {
-                  (billets && billets.length>0) ? billets.map((item)=> <><span style={{fontWeight:'700',fontSize:20,marginLeft:10,color:'#fff'}}>{item.prix}$ USD({item.tarifs}) </span><br/></>) :'test'
+                  (billets && billets.length>0) ? billets.map((item)=> <><span style={{fontWeight:'700',fontSize:20,marginLeft:10,color:'#fff'}}>{item.prix}$ USD {item.tarifs && `(${item.tarifs})`} </span><br/></>) :'test'
                }
                </li>
        </ul>

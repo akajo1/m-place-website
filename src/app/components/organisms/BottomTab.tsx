@@ -9,7 +9,7 @@ type Props = {
 export default function BottomTab({active}: Props) {
   return (
     <div className="bottomTab">
-        <BottomTabItem active={(active && active == '/') ? '/':''} link='/' icon={<AiFillHome  className='icon' size={23}/>} title='home'/>
+        <BottomTabItem active={(active && active == '/') ? '/':''} link='/' icon={<AiFillHome  className='icon' size={23}/>} title='Accueil'/>
         <BottomTabItem active={(active && active == 'news') ? '/news':''}   link='/news' icon={<MdOutlineArticle  className='icon' size={23}/>} title='News'/>
         <BottomTabItem active={(active && active == 'videos') ? '/videos':''}  link='/videos' icon={<MdOndemandVideo  className='icon' size={23}/>} title='Vidéos'/>
         <BottomTabItem active={(active && active == 'more') ? '/more':''}  link='/more' icon={<MdOutlineMenuOpen  className='icon' size={23}/>} title='More'/>

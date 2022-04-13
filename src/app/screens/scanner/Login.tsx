@@ -8,26 +8,29 @@ import { getEvent, scanLogin } from '../../config/api'
 type Props = {}
 
 export default function Login({}: Props) {
-    const {user} = useParams()
+    const {user} = useParams();
+    const users = localStorage.getItem("scan-compte");
     const [password,setPassword]=useState('')
     const [event,setEvent]= useState<eventType>()
     const [error,setError]= useState('')
     const navigate = useNavigate();
+
+    useEffect(() => { if (users)  navigate("/scanner/dashboard");})
+
+    useEffect(()=>{ if(!user) navigate('/');})
     
     useEffect(()=>{
         (async ()=>{
-            if(user !== undefined){
+            if(user){
                 await getEvent(user).
                 then((response)=>{
                     setEvent(response.data)
                 })
-            }
-            
-           
+            }  
         })()
     },[])
     const log = ()=>{
-        if(user != null && password !=''){
+        if(user){
             scanLogin(user,password)
             .then((response)=>{
                 const reponse = response.data;
@@ -42,11 +45,7 @@ export default function Login({}: Props) {
             setError('vous devez taper votre mot de passe')
         }
     }
-    useEffect(()=>{
-        if(user == null || undefined){
-            navigate('/')
-        }
-    })
+ 
   return (
   <>
     <SImage
