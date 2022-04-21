@@ -16,7 +16,7 @@ import { colors } from "../../styles/colors";
 type Props = {};
 
 const Pay = (props: Props) => {
-  const { user, event } = useParams();
+  const { user, event,app } = useParams();
   const [events, setEvent] = useState<eventType>();
   const [billets, setBillets] = useState<billetTType[]>([]);
   const [nbBillet, setNbBillet] = useState(0);
@@ -164,7 +164,11 @@ const paiementMobile = ()=>{
 
                 setTimeout(()=>{
                   setSuccess(false)
-                  navigate('/');
+                  if(app){
+                    document.location='https://upload.m-place.events/app'
+                  }else{
+                    navigate('/');
+                  }
                 },3000)
               }else{
                 setText('')
@@ -224,12 +228,19 @@ const paiementCarte = ()=>{
           />
         </div>
       </div>
-      <blockquote style={{backgroundColor:colors.success,padding:10,borderRadius:20,marginBottom:10}}>
-      la durée maximale de réception de vos billets achetés est de 24 heures. Si ce délai est  passé et que vous ne recevez toujours pas vos billets,  votre argent vous sera retourné sinon s'il vous plaît appeler le service clientèle <b>Mplace en cliquant sur le bouton flottant whatsapp.</b>
-      </blockquote>
-      <blockquote style={{backgroundColor:colors.danger,padding:10,borderRadius:20,marginBottom:10,color:colors.white}}>
-      En cas d'echec de paiement, le temps de restitution d'argent est de 24 heures après examen
-      </blockquote>
+      <div style={{backgroundColor:colors.success,padding:10,borderRadius:20,marginBottom:10}}>
+        
+      La durée maximale de réception de vos billets achetés est de 24 heures. 
+
+Si ce délai est passé et que vous ne recevez toujours pas vos billets, votre argent vous sera restitué. <br/>
+
+En cas d'echec de paiement, le temps de restitution d'argent est de 24 heures après examen.
+
+      </div>
+      <div style={{backgroundColor:colors.success,padding:10,borderRadius:20,marginBottom:10}}>
+      Notre Service Client est disponible 24/7, juste en cliquant sur le bouton whatsapp flottant .
+
+</div>
       <div
         style={{
           width: "100%",

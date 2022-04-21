@@ -114,9 +114,19 @@ const logout = ()=>{
      <div style={{padding:'20px'}}>
      <h1 style={{color:colors.white}}>Mes billets</h1>
       <h4 style={{color:colors.second,marginBottom:30}}>Evenement</h4>
-      <blockquote style={{backgroundColor:colors.success,padding:10,borderRadius:20,marginBottom:10}}>
-      la durée maximale de réception de vos billets achetés est de 24 heures. Si ce délai est  passé et que vous ne recevez toujours pas vos billets,  votre argent vous sera retourné sinon s'il vous plaît appeler le service clientèle <b>Mplace en cliquant sur le bouton flottant whatsapp.</b>
-      </blockquote>
+      <div style={{backgroundColor:colors.success,padding:10,borderRadius:20,marginBottom:10}}>
+        
+        La durée maximale de réception de vos billets achetés est de 24 heures. 
+  
+  Si ce délai est passé et que vous ne recevez toujours pas vos billets, votre argent vous sera restitué. <br/>
+  
+  En cas d'echec de paiement, le temps de restitution d'argent est de 24 heures après examen.
+  
+        </div>
+        <div style={{backgroundColor:colors.success,padding:10,borderRadius:20,marginBottom:10}}>
+        Notre Service Client est disponible 24/7, juste en cliquant sur le bouton whatsapp flottant .
+  
+  </div>
     {
       billets?.map((item,index)=> <BilletItem billet={item} key={index}/>)
     }

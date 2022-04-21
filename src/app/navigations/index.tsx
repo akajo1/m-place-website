@@ -40,7 +40,8 @@ export default function Navigation({}: Props) {
         <Route path="/articleDetail/:token" element={<ArticleDetail />} />
         <Route path="/eventDetail/:token" element={<EventDetail />} />
         <Route path="/code/:token" element={<Code />} />
-        <Route path="/pay/:user/:event" element={<Pay />} />
+        <Route path="/pay/:user/:event/" element={<Pay />} />
+        <Route path="/pay/:user/:event/:app" element={<Pay />} />
         <Route path="/scanner" element={<Scanner />} />
         <Route path="/scanner/login/:user" element={<ScannerLogin />} />
         <Route path="/scanner/dashboard" element={<DashBoard />} />
