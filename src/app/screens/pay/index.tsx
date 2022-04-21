@@ -10,6 +10,7 @@ import * as animationSuccess from '../../assets/87795-loading-success.json'
 import * as animationCancel from '../../assets/38993-ocl-canceled.json'
 import Navigation from "../../navigations";
 import Helmet from "../../components/molecules/Helmet";
+import { colors } from "../../styles/colors";
 
 
 type Props = {};
@@ -138,39 +139,51 @@ const navigate = useNavigate()
       }
     })();
   }, []);
+
   useEffect(()=>{
     tarif =='' && (billets && billets.length > 0) && setTarif(billets[0].prix.toString())
-  })
+  });
+
 const paiementMobile = ()=>{
   setLoad(true)
   const nn= nbBillet * parseFloat(tarif)
   if(events){
     mobilePaie(phone,events?.titre,nn.toString(),user!,tokenTarif!,nbBillet.toString()!)
     .then((reponse)=>{
-      setText('veuillez comfirmer le paiement en tapant votre mot de passe sur le pop-up afficher')
-      setTimeout(()=>{
-          paiementCheck(reponse.data.orderNumber)
-          .then((reponse)=>{
-            const {data} = reponse;
-            if(data.transaction && data.transaction.status == '0'){
-              setLoad(false)
-              setSuccess(true)
+      const {data} = reponse
+      console.log(data.orderNumber)
+      if(data.code =='0'){
+        setText('veuillez comfirmer le paiement en tapant votre mot de passe sur le pop-up afficher')
+        setTimeout(()=>{
+            paiementCheck(reponse.data.orderNumber)
+            .then((reponse)=>{
+              const {data} = reponse;
+              if(data.transaction && data.transaction.status == '0'){
+                setLoad(false)
+                setSuccess(true)
 
-              setTimeout(()=>{
-                setSuccess(false)
-                navigate('/');
-              },3000)
-            }else{
-              setText('')
-              setLoad(false)
-              setCancel(true)
+                setTimeout(()=>{
+                  setSuccess(false)
+                  navigate('/');
+                },3000)
+              }else{
+                setText('')
+                setLoad(false)
+                setCancel(true)
 
-              setTimeout(()=>{
-                setCancel(false)
-              },3000)
-            }
-          })
-      },10000)
+                setTimeout(()=>{
+                  setCancel(false)
+                },3000)
+              }
+            })
+        },30000);
+      }else{
+        setText(data.message);
+        setTimeout(()=>{
+          setText('')
+          setLoad(false)
+        },3000)
+      }
     })
   }
 }
@@ -181,13 +194,11 @@ const paiementCarte = ()=>{
     if(events){
       cartePaie(events.titre,nn.toString(),user,tokenTarif,nbBillet.toString()!)
       .then((reponse)=>{
-        console.log(reponse.data)
+       const {data}=reponse
       })
     }
   }
 }
-
-
 
   return (
     <>
@@ -213,7 +224,12 @@ const paiementCarte = ()=>{
           />
         </div>
       </div>
-      
+      <blockquote style={{backgroundColor:colors.success,padding:10,borderRadius:20,marginBottom:10}}>
+      la durée maximale de réception de vos billets achetés est de 24 heures. Si ce délai est  passé et que vous ne recevez toujours pas vos billets,  votre argent vous sera retourné sinon s'il vous plaît appeler le service clientèle <b>Mplace en cliquant sur le bouton flottant whatsapp.</b>
+      </blockquote>
+      <blockquote style={{backgroundColor:colors.danger,padding:10,borderRadius:20,marginBottom:10,color:colors.white}}>
+      En cas d'echec de paiement, le temps de restitution d'argent est de 24 heures après examen
+      </blockquote>
       <div
         style={{
           width: "100%",
@@ -222,7 +238,7 @@ const paiementCarte = ()=>{
           backgroundColor: "#fff",
         }}
       >
-        
+     
         <div
           style={{
             backgroundColor: "#FFF",

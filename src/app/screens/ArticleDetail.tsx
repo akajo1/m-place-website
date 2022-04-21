@@ -7,7 +7,7 @@ import { articleType } from '../config';
 import { getNew } from '../config/api';
 import LazyAnimate from '../components/molecules/LazyAnimate';
 import Helmet from '../components/molecules/Helmet';
-
+import nl2br from 'react-nl2br'
 type Props = {}
 
 export default function ArticleDetail({}: Props) {
@@ -55,9 +55,9 @@ export default function ArticleDetail({}: Props) {
             }}
        />
        <div style={{padding:'20px 10px'}}>
-       <h1 style={{color:colors.white,fontWeight:'700',marginBottom:15}}>{article?.titre}</h1>
+       <h2 style={{color:colors.white,fontWeight:'700',marginBottom:15}}>{article?.titre}</h2>
      
-    <p style={{color:colors.white,textAlign:'justify'}}>{article?.description}</p>
+    <p style={{color:colors.white}}>{nl2br(article?.description)}</p>
        </div>
    </div>
   )

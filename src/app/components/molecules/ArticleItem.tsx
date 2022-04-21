@@ -20,7 +20,7 @@ export default function ArticleItem({item}: Props) {
                 borderRadius:'20px'
             }
         }} />
-        <p style={{color:colors.white,textAlign:'justify',fontSize:'18px',marginBottom:20,marginTop:5,fontWeight:'700'}}>
+        <p style={{color:colors.white,fontSize:'16px',marginBottom:20,marginTop:5,fontWeight:'700'}}>
             {item.titre.length < 90 ? item.titre : item.titre.substring(0,90)+'...'}
         </p>
     </div>
