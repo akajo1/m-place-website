@@ -42,7 +42,8 @@ export default function DashBoard({}: Props) {
         });
       }
     })();
-  }, []);
+    
+  });
   useEffect(() => {
     if (!users) {
       navigate("/");
@@ -71,6 +72,7 @@ export default function DashBoard({}: Props) {
       </div>
     );
   };
+ 
   return (
     <>
       <SImage
@@ -147,16 +149,17 @@ export default function DashBoard({}: Props) {
           </button>
         </div>
 
-        {stats !== null &&
+        {stats &&
           DashItem(stats.billet_restant + stats.billet_vendu, "billet generer")}
-        {stats !== null && DashItem(stats?.billet_vendu, "billet acheter")}
-        {stats !== null && DashItem(stats.billet_restant, "billet restant")}
-        {stats !== null &&
-          DashItem((stats.somme) + " $", "revenu actuellement générer")}
+        {stats  && DashItem(stats?.billet_vendu, "billet acheter")}
+        {stats  && DashItem(stats.billet_restant, "billet restant")}
+        {stats  && DashItem((stats.somme)? stats.somme: "0" + " $", "revenu actuellement générer")}
+        {
+          !stats && <p style={{margin:'10px 0',textAlign:'center'}}>Vous n'avez encore rien vendu pour le moment</p>
+        }
+      {stats &&   <h3 style={{ marginBottom: 20 }}>Billet scanner</h3>}
 
-        <h3 style={{ marginBottom: 20 }}>Billet scanner</h3>
-
-        {scanning !== null &&
+        {scanning  &&
           scanning.map((item, index) => (
             <div
               key={index}
