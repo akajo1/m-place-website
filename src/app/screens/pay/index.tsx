@@ -2,13 +2,12 @@ import React, { useEffect, useRef, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { image } from "../../assets";
 import SImage from "../../components/atoms/SImage";
-import { baseImage, billetTType, eventType } from "../../config";
+import {  billetTType, eventType } from "../../config";
 import { cartePaie, getBillett, getEvent, mobilePaie, paiementCheck } from "../../config/api";
 import Lottie from 'react-lottie';
 import * as animationData from '../../assets/84272-loading-colour.json'
 import * as animationSuccess from '../../assets/87795-loading-success.json'
 import * as animationCancel from '../../assets/38993-ocl-canceled.json'
-import Navigation from "../../navigations";
 import Helmet from "../../components/molecules/Helmet";
 import { colors } from "../../styles/colors";
 
@@ -25,7 +24,6 @@ const Pay = (props: Props) => {
   const [load, setLoad] = useState(false);
   const [success, setSuccess] = useState(false);
   const [cancel, setCancel] = useState(false);
-  const [orderNumber, setorder] = useState('');
   const [text, setText] = useState('');
   const [tokenTarif, setTokenTarif] = useState('');
 const navigate = useNavigate()
@@ -138,24 +136,27 @@ const navigate = useNavigate()
         });
       }
     })();
-  }, []);
+  }, [event]);
 
   useEffect(()=>{
-    tarif =='' && (billets && billets.length > 0) && setTarif(billets[0].prix.toString())
+    if(tarif ==='' && (billets && billets.length > 0)) {
+    setTarif(billets[0].prix.toString())
+    setTokenTarif(billets[0].token!)
+    }
+      
   });
 
 const paiementMobile = ()=>{
   setLoad(true)
   const nn= nbBillet * parseFloat(tarif)
   if(events){
-    mobilePaie(phone,events?.titre,nn.toString(),user!,tokenTarif!,nbBillet.toString()!)
+    mobilePaie(phone,events?.titre,nn.toString())
     .then((reponse)=>{
       const {data} = reponse
-      console.log(data.orderNumber)
-      if(data.code =='0'){
-        setText('veuillez comfirmer le paiement en tapant votre mot de passe sur le pop-up afficher')
+      setText('veuillez comfirmer le paiement en tapant votre mot de passe sur le pop-up afficher')
+      if(data.code === '0'){
         setTimeout(()=>{
-            paiementCheck(reponse.data.orderNumber)
+            paiementCheck(reponse.data.orderNumber,user!,tokenTarif!,nbBillet.toString()!)
             .then((reponse)=>{
               const {data} = reponse;
               if(data.transaction && data.transaction.status == '0'){
@@ -169,18 +170,20 @@ const paiementMobile = ()=>{
                   }else{
                     navigate('/');
                   }
+                 
                 },3000)
               }else{
                 setText('')
                 setLoad(false)
                 setCancel(true)
-
                 setTimeout(()=>{
                   setCancel(false)
+                 
                 },3000)
               }
             })
-        },30000);
+          
+        },15000);
       }else{
         setText(data.message);
         setTimeout(()=>{
@@ -203,7 +206,6 @@ const paiementCarte = ()=>{
     }
   }
 }
-
   return (
     <>
         {load && <LoadAnimation/>}
