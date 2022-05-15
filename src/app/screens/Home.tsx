@@ -24,7 +24,7 @@ const Home = (props: Props) => {
           setLoad(false)
             const reponse = response.data
             setEvents(reponse);
-            console.log(reponse)
+            
         })
     }
     const getAllPublicite = ()=>{

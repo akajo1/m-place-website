@@ -47,15 +47,16 @@ export const fetchSearch = async (search:string)=>{
    return axios.get('/mobile/search/'+encodeURI(search)) 
 }
 
-export const mobilePaie = (phone:string,reference:string,amount:string,user:string,tokenTarif:string,nbBillet:string,currency:string="USD")=>{
-   return axios.post('/paie/mobilemoney',{phone,reference,amount,currency,user,tokenTarif,quantite:nbBillet})
+export const mobilePaie = (phone:string,reference:string,amount:string,currency:string="CDF")=>{
+   return axios.post('/paie/mobilemoney',{phone,reference,amount,currency})
 }
 export const cartePaie = (reference:string,amount:string,user:string,tokenTarif:string,billet:string,currency:string="USD")=>{
    return axios.post('/paie/card',{reference,amount,currency,user,tokenTarif,quantite:billet})
 }
 
-export const paiementCheck = (check:string)=>{
-   return axios.get('/paie/verifyPaiement/'+encodeURI(check))
+export const paiementCheck = (check:string,user:string,tokenTarif:string,nbBillet:string,currency:string="Mobile-money")=>{
+   
+   return axios.get('/paie/verifyPaiement/'+encodeURI(check)+'/'+encodeURI(user)+'/'+encodeURI(tokenTarif)+'/'+encodeURI(nbBillet)+'/'+encodeURI(currency))
 }
 
 export const getBilletInfo = (token:string)=>{
