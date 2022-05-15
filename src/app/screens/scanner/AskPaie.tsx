@@ -21,6 +21,7 @@ export default function AskPaie({}: Props) {
       if (users) {
         await getEvent(users).then((response) => {
           setEvent(response.data);
+          setPr(response.data.pourcentage)
           getOrgStat(response.data.token_organisateur, users).then((resp) => {
             const datas = resp.data;
             setStats(datas);
@@ -30,13 +31,7 @@ export default function AskPaie({}: Props) {
       }
     })();
   }, []);
-  useEffect(() => {
-   getPourcentage()
-   .then((reponse)=>{
-        const data = reponse.data
-        setPr(data.pourc)
-   })
-  }, []);
+
   const onSubmit = ()=>{
     if(valeur.length < 13){
         alert('veuillez taper votre numero de telephone en commencant pas +243');
@@ -97,15 +92,15 @@ export default function AskPaie({}: Props) {
           <p>
             <small>vous avez generé</small>
           </p>
-          <h1>{stats!=null ? stats.somme : '0'} $</h1>
+          <h1>{stats ? stats.somme : '0'} $</h1>
           <h6 style={{ color: colors.danger, marginTop: 5 }}>
-            {pr !==null ? pr : '0'}% M-place 
+            {pr ? pr : '0'}% M-place 
             {
-              ' '+  (parseInt(pr!) *parseInt(stats?.somme!))/100 +' $'
+              stats ? ' '+(parseFloat(pr!) *parseInt(stats?.somme!))/100:' 0' +' $'
             }
           </h6>
         </div>
-        <p style={{ marginTop: 20 }}>vous avez { parseInt(stats?.somme!) - (parseInt(pr!) *parseInt(stats?.somme!))/100} $</p>
+        <p style={{ marginTop: 20 }}>vous avez {stats ?  parseFloat(stats?.somme!) - (parseFloat(pr!) *parseFloat(stats?.somme!))/100 :'0'} $</p>
        <div style={{width:'100%',padding:'20px 15px'}}>
        <input placeholder="taper votre numéro" value={valeur} onChange={(input)=> setValeur(input.target.value)}  style={{width:'70%',height:40,border:0,padding:'10px 15px',margin:'10px 0',borderRadius:20}}/>
        <p><small>Taper votre numéro pour les transactions</small></p>
