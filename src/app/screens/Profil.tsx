@@ -114,7 +114,7 @@ const logout = ()=>{
      <div style={{padding:'20px'}}>
      <h1 style={{color:colors.white}}>Mes billets</h1>
       <h4 style={{color:colors.second,marginBottom:30}}>Evenement</h4>
-      <div style={{backgroundColor:colors.success,padding:10,borderRadius:20,marginBottom:10}}>
+     {/* { <div style={{backgroundColor:colors.success,padding:10,borderRadius:20,marginBottom:10}}>
         
         La durée maximale de réception de vos billets achetés est de 24 heures. 
   
@@ -122,8 +122,8 @@ const logout = ()=>{
   
   En cas d'echec de paiement, le temps de restitution d'argent est de 24 heures après examen.
   
-        </div>
-        <div style={{backgroundColor:colors.success,padding:10,borderRadius:20,marginBottom:10}}>
+        </div>} */}
+        <div style={{backgroundColor:colors.white,padding:10,borderRadius:20,marginBottom:10}}>
         Notre Service Client est disponible 24/7, juste en cliquant sur le bouton whatsapp flottant .
   
   </div>

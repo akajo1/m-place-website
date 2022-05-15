@@ -153,13 +153,14 @@ const paiementMobile = ()=>{
     mobilePaie(phone,events?.titre,nn.toString())
     .then((reponse)=>{
       const {data} = reponse
+      console.log(data)
       setText('veuillez comfirmer le paiement en tapant votre mot de passe sur le pop-up afficher')
-      if(data.code === '0'){
+      if(data.code =='0'){
         setTimeout(()=>{
-            paiementCheck(reponse.data.orderNumber,user!,tokenTarif!,nbBillet.toString()!)
-            .then((reponse)=>{
-              const {data} = reponse;
-              if(data.transaction && data.transaction.status == '0'){
+            paiementCheck(data.orderNumber,user!,tokenTarif!,nbBillet.toString()!)
+            .then((response)=>{
+              const datas = response.data;
+              if(datas.transaction && datas.transaction.status == '0'){
                 setLoad(false)
                 setSuccess(true)
 
@@ -183,7 +184,7 @@ const paiementMobile = ()=>{
               }
             })
           
-        },15000);
+        },20000);
       }else{
         setText(data.message);
         setTimeout(()=>{
@@ -230,16 +231,16 @@ const paiementCarte = ()=>{
           />
         </div>
       </div>
-      <div style={{backgroundColor:colors.success,padding:10,borderRadius:20,marginBottom:10}}>
-        
-      La durée maximale de réception de vos billets achetés est de 24 heures. 
+    {/* <div style={{backgroundColor:colors.success,padding:10,borderRadius:20,marginBottom:10}}>
+      
+    La durée maximale de réception de vos billets achetés est de 24 heures. 
 
 Si ce délai est passé et que vous ne recevez toujours pas vos billets, votre argent vous sera restitué. <br/>
 
 En cas d'echec de paiement, le temps de restitution d'argent est de 24 heures après examen.
 
-      </div>
-      <div style={{backgroundColor:colors.success,padding:10,borderRadius:20,marginBottom:10}}>
+    </div> */}
+      <div style={{backgroundColor:colors.white,padding:10,borderRadius:20,marginBottom:10}}>
       Notre Service Client est disponible 24/7, juste en cliquant sur le bouton whatsapp flottant .
 
 </div>
